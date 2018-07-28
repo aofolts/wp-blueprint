@@ -50,10 +50,8 @@ function new_post_type($type) {
 }
 
 // Returns a new taxonomy class instance
-function new_taxonomy($name,$post_type) {
-
-  return new Blueprint\Wp\Taxonomy($name,$post_type);
-
+function new_taxonomy($name) {
+  return new Blueprint\Wp\Taxonomy($name);
 }
 
 // Gets a theme path

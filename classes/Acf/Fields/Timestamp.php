@@ -15,7 +15,7 @@ class Timestamp extends Field {
 
   }
 
-  setPresetFormat($preset) {
+  function setPresetFormat($preset) {
 
     // TODO: test formats, best for searching
 

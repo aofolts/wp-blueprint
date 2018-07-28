@@ -128,6 +128,13 @@ trait FieldBuilder {
 //   return $this->addField($field);
 // }
 
+  // Adds a gallery field
+  function addGallery($name='gallery') {
+    $field = new Fields\Gallery($name);
+
+    return $this->addField($field);
+  }
+
   // function addFlexibleContent($name,$chain=true) {
   //   $field = (new Fields\FlexibleContent($name));
   //   return $this->addField($field);
@@ -195,12 +202,10 @@ trait FieldBuilder {
   }
 
   // Adds a post object field
-
   function addPostObject($name) {
-
     $field = (new Fields\PostObject($name));
+    
     return $this->addField($field);
-
   }
 
   // Adds a range field
@@ -257,6 +262,13 @@ trait FieldBuilder {
     $field = (new Fields\TextArea($name));
     return $this->addField($field);
 
+  }
+
+  // Adds a time picker field
+  function addTime($name) {
+    $field = (new Fields\TimePicker($name));
+
+    return $this->addField($field);
   }
 
   // Adds a true/false field

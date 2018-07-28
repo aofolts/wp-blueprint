@@ -9,11 +9,10 @@ class Taxonomy {
   private $args = array();
   private $labels = array();
 
-  function __construct($taxonomy,$postType) {
+  function __construct($taxonomy) {
 
     $this->setTaxonomy($taxonomy);
     $this->setHierarchical(true);
-    $this->setPostType($postType);
 
     // Sets the action, depending on whether the init action
     // has already fired

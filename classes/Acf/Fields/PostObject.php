@@ -16,17 +16,14 @@ class PostObject extends Field {
   }
 
   // Specifies whether to allow a blank value
-
   function allowNull($allow=false) {
-
     $this->field['allow_null'] = (bool) $allow;
-    return $this;
 
+    return $this;
   }
 
   // Specifies whether to allow the user to select
   // multiple posts
-
   function setMultiple($multiple) {
 
     $this->field['multiple'] = $multiple;
@@ -64,6 +61,8 @@ class PostObject extends Field {
     $this->max = (int) $max;
 
     add_action('acf/validate_value/key=' . $this->key,array($this,'validateCount'),10,2);
+
+    return $this;
   }
 
   // Sets the min number of posts allowed
@@ -71,6 +70,8 @@ class PostObject extends Field {
     $this->min = (int) $min;
 
     add_action('acf/validate_value/key=' . $this->key,array($this,'validateCount'),10,2);
+
+    return $this;
   }
 
   // Validates the post count

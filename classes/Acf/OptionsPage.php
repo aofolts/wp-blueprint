@@ -23,6 +23,7 @@ class OptionsPage {
 
     // Set options page defaults
     $this->setTitle($slug);
+    $this->setPostId($slug);
     $this->setPageTitle();
     $this->setCapability();
 
@@ -93,6 +94,12 @@ class OptionsPage {
     return $this;
   }
 
+  // Sets the post_id (for saving)
+  function setPostId($id) {
+    $this->options['post_id'] = $id;
+    return $this;
+  }
+
   function setRedirect($redirect) {
     if (is_bool($redirect)) {$this->options['redirect'] = $redirect;}
     return $this;
@@ -108,8 +115,7 @@ class OptionsPage {
   }
 
   // Returns the array of options
-
-  protected function getOptions() {
+  function getOptions() {
 
     return $this->options;
 

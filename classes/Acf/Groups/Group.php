@@ -9,10 +9,12 @@ class Group {
   // Used for both "field group" and "group field"
   use Acf\FieldBuilder;
 
+  // $location, getLocation, setLocation
+  use Acf\LocationBuilderTrait;
+
   protected $key;
   protected $title;
   protected $field;
-  protected $location;
 
   /**
    * Sets group key and title
@@ -66,6 +68,8 @@ class Group {
     else {return $key;}
   }
 
+  
+
   // Returns the group name (not used in field array output)
   function getName() {
 
@@ -106,17 +110,6 @@ class Group {
     $this->group['label_placement'] = $placement;
 
     return $this;
-
-  }
-
-  // Sets the location of the field group
-  function setLocation($param=null,$val=null,$operator='==') {
-
-    // Stores a new LocationBuilder instance
-    $this->location = $location = (new Acf\LocationBuilder($this));
-
-    if ($param) {$location->addLocation($param,$val,$operator); return $this;}
-    else {return $location;}
 
   }
 
@@ -183,7 +176,7 @@ class Group {
 
     // Add location rules
     if ($this->location) {
-      $this->group['location'] = $this->location->getLocation();
+      $this->group['location'] = $this->location->getRules();
     }
 
     // Add fields

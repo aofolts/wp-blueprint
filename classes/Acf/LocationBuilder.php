@@ -4,17 +4,9 @@ namespace Blueprint\Acf;
 
 class LocationBuilder {
 
-  protected $location = array();
-  protected $locationIndex = 0;
+  protected $rules = array();
 
-  /**
-   * Adds a location to the group
-   *
-   * @param $param_or_val: value if only one argument given
-   * ex: addLocation('post') ... displays when post_type is 'post'
-   * ex: addLocation(43) ... displays on page 43
-   */
-
+  // Adds a location rule
   function addLocation($param_or_val,$val=null,$operator='==') {
 
     // If only 1 argument
@@ -28,7 +20,7 @@ class LocationBuilder {
     }
 
     array_push(
-      $this->location,
+      $this->rules,
       array(
         array(
           'param'    => $param,
@@ -42,8 +34,8 @@ class LocationBuilder {
 
   }
 
-  function getLocation() {
-    return $this->location;
+  function getRules() {
+    return $this->rules;
   }
 
 }

@@ -68,6 +68,7 @@ class Blueprint {
 
     // Reqire other core files
     require 'inc/reset.php';
+    require 'inc/rest.php';
     bp_require('inc/acf/functions.php');
     bp_require('inc/temp.php');
     bp_require('inc/parts/functions.php');

@@ -74,15 +74,13 @@ class Field {
 
   }
 
-  // TODO: what does this do?
+  // Makes field read-only
+  function setDisabled($bool) {
+    $this->field['disabled'] = (bool) $bool;
+    $this->field['readonly'] = (bool) $bool;
 
-  // function setDisabled() {
-  //
-  //   $this->field['disabled'] = true;
-  //   $this->field['readonly'] = 1;
-  //   return $this;
-  //
-  // }
+    return $this;
+  }
 
   // Returns $key
   function getKey($format='raw') {
@@ -287,12 +285,23 @@ class Field {
   function loadSaveKeys($value) {
 
     global $post;
+    // Convert object to array
     $arr = (array) $post;
     
+    // Attempt to load value if empty for easy access
     if (empty($value)) {
+      // Loop through save keys
       foreach ($this->saveKeys as $pair) {
-        $key = $pair['key'];
-        $value = $arr[$key];
+        $table = $pair['table'];
+        $key   = $pair['key'];
+        
+        // Get value from appropriate table
+        if ($table == 'wp_postmeta') {
+          $value = get_post_meta($post->ID,$key,true);
+        } elseif ($table == 'wp_posts') {
+          $value = $post[$key];
+        }
+
         if ($value) {break;}
       }
     }

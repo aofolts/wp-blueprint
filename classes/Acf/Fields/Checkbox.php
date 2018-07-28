@@ -38,16 +38,10 @@ class Checkbox extends Field {
   }
 
   // Sets the layout orientation
-
-  function setLayout($layout) {
-
-    if (!in_array($layout,$layouts)) {
-      wp_die('Field setLayout: invalid layout type (expects "vertical" or "horizontal")');
-    }
-
+  function setOrientation($layout='checkbox') {
     $this->field['layout'] = $layout;
-    return $this;
 
+    return $this;
   }
 
 }

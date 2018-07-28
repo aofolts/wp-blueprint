@@ -20,6 +20,7 @@ class PostType {
     $this->setArg('public',true);
     $this->setArg('has_archive',false);
     $this->setSupports(null);
+    $this->setWithFront(true);
 
     // Sets the action, depending on whether the init action
     // has already fired
@@ -145,6 +146,7 @@ class PostType {
   function setSlug($slug) {
     $this->rewrite->slug = $slug;
     $this->rewrite->with_front = true;
+    $this->setRestBase($slug);
 
     return $this;
   }
